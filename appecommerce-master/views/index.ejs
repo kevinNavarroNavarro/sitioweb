@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <title>LabrD</title>
+
+  <link rel="shortcut icon" href="/assets/images/g1086.png" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/media.css">
+
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+
+  <!-- Latest compiled and minified JavaScript Lucia-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript Lucia-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Firestore Base de Datos lucia-->
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+  <!-- Firestore Base de Datos lucia-->
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <!-- NAV PARA WISH LIST, SIGN IN, REGISTER  -->
+    <div class="firstNav">
+      <div class="firstNavwrap">
+        <a class="links" href="#">Sign In</a>
+        <a class="links" href="#">Register</a>
+      </div>
+    </div>
+    <!-- NAV PARA MARCA, INPUT Y CARRITO DE COMPRA -->
+    <div class="secondNav">
+      <img src="assets/images/g1086.png" alt="">
+      <div class="formLoupe">
+        <input class="flipkart-navbar-input col-xs-11 inputSearch" autocomplete="off" type="" placeholder="Search for category...">
+        <img src="/assets/images/substract.svg" class="substract">
+        <input type="image" src="/assets/images/search.svg" class="search">
+      </div>
+      <div class="cart btn btn-demo" data-toggle="modal" data-target="#myModal2">
+        <img src="/assets/images/shopping-cart.png" alt="">
+        <p class="counterAddToCart">0</p>
+      </div>
+    </div>
+    <!-- NAV PARA BUSQUEDA POR CATEGORÍA Y OTRAS PREFERENCIAS  -->
+    <div class="thirdNav">
+      <select class="categoriesSelect">
+        <option value="categorias" class="option" selected="selected">CATEGORIA</option>
+      </select>
+      <a href="#" name='MLC1430' class="anchorOption">Vestuario y Calzado</a>
+      <a href="#" name='MLC1648' class="anchorOption">Computación</a>
+      <a href="#" name='MLC1574' class="anchorOption">Hogar y Muebles</a>
+      <a href="#" name='MLC110931' class="anchorOption">Entradas para Eventos</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <img src="assets/images/mlc-home-desktop-slider-picture-b2f2c69c-8a43-4948-8a01-99e5c3296f0c.jpg" alt="">
+      </div>
+    </div>
+  </section>
+  <section class="resultsSearchInput">
+
+  </section>
+
+  <section class="resultsList">
+
+
+
+  </section>
+
+  <section class="WishList">
+
+  </section>
+
+  <section class="cart container">
+    <div class="row">
+      <div>
+        <!-- Modal -->
+        <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" id='modalclosebtn' class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">Your Cart</h4>
+              </div>
+
+              <div class="modal-body containerCart">
+
+              </div>
+
+              <div class="buttonCheckout">
+                <form action="/pay" method="post">
+                  <input type="text" name="total" id="prueba">
+                  <button type="submit" class="button">Checkout&nbsp;
+                    <span class="total">0</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <!-- modal-content -->
+          </div>
+          <!-- modal-dialog -->
+        </div>
+        <!-- modal -->
+
+      </div>
+    </div>
+  </section>
+
+  <section class="detailProduct">
+
+  </section>
+
+  <div class="hideView"></div>
+
+  <section class="Totales">
+    <!-- <section class="cartt">
+
+    </section> -->
+    <div class="enviar">
+      <form action="/pay" method="post" class="form">
+        <input type="text" name="total" id="Enviar">
+        <input type="submit" value="Buy" class="buy">
+      </form>
+    </div>
+  </section>
+
+  <!-- Katty -->
+  <section id="sectionOffers"></section>
+  <!-- <hr class="hr"> -->
+  <section id="sectionSeen"></section>
+  <!--   <hr class="hr">
+ -->
+  <section id="sectionTechnology"></section>
+  <!--   <hr class="hr">
+ -->
+  <section id="sectionBooks"></section>
+  <!-- <hr class="hr"> -->
+  <section id="advertising">
+    <img class="imgAdvertising" src="/assets/images/publicidad.jpg">
+    <img class="imgAdvertising" src="/assets/images/Gift-Card.jpg">
+    <img class="imgAdvertising2" src="/assets/images/publicidad2.jpg">
+  </section>
+  <section id="detail"></section>
+  <footer>
+    <div class="container-fluid backToTop">
+      <div class="row">
+        <div class="col-md-7 col-md-offset-5">
+          <a href="#">Volver arriba</a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid container-footer">
+      <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+          <ul>
+            <a href="#">
+              <li class="firstLi">
+                <strong>Conocernos</strong>
+              </li>
+            </a>
+            <a href="#">
+              <li>Carreras</li>
+            </a>
+            <a href="#">
+              <li>Acerca de</li>
+            </a>
+            <a href="#">
+              <li>Relaciones con inversionistas</li>
+            </a>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul>
+            <a href="#">
+              <li class="firstLi">
+                <strong>Gana dinero con nosotros</strong>
+              </li>
+            </a>
+            <a href="#">
+              <li>Anuncie sus productos</li>
+            </a>
+            <a href="#">
+              <li>Autoedición con nosotros</li>
+            </a>
+            <a href="#">
+              <li>Vende tus servicios en</li>
+            </a>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul>
+            <a href="#">
+              <li class="firstLi">
+                <strong>Productos de pago</strong>
+              </li>
+            </a>
+            <a href="#">
+              <li>Línea de crédito corporativo</li>
+            </a>
+            <a href="#">
+              <li>Compre con puntos</li>
+            </a>
+            <a href="#">
+              <li>Recarga tu saldo</li>
+            </a>
+          </ul>
+        </div>
+        <div class="col-md-3 cards">
+          <img class="imgPaypal" src="/assets/images/paypal.png">
+          <img class="imgVisa" src="/assets/images/visa.png">
+          <img class="imgMastercard" src="/assets/images/mastercard.png">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid container-footer">
+      <div class="row">
+        <div class="col-md-1 col-md-offset-4">
+          <i class="fab fa-facebook-f"></i>
+        </div>
+        <div class="col-md-1">
+          <i class="fab fa-twitter"></i>
+        </div>
+        <div class="col-md-1 col-md-offset-right-5">
+          <i class="fab fa-google-plus-g"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+          <p class="termsConditions">Terms and conditions | Privacy Policy | Sitemap</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="container">
+
+    <!-- Button to trigger modal -->
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h4 class="modal-title titleUnique">
+
+            </h4>
+          </div>
+          <div class="modal-body Details">
+           
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- lucia -->
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAmkjOzP-gCKgvNm0kEJCYWd56GcGncmss",
+      authDomain: "ecommerce-7b26c.firebaseapp.com",
+      databaseURL: "https://ecommerce-7b26c.firebaseio.com",
+      projectId: "ecommerce-7b26c",
+      storageBucket: "",
+      messagingSenderId: "101587609471"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <!-- lucia -->
+  <script src="/assets/js/firebase.js"></script>
+  <script src="/assets/js/app.js"></script>
+
+  <!-- lucia -->
+</body>
+
+</html>
